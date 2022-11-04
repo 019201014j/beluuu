@@ -1,0 +1,72 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="">
+      <img src="https://i.pinimg.com/originals/f8/9f/28/f89f2883988dabf8326721d8ae9807ed.png" alt="" width="70" height="58" class="d-inline-block align-text-center">
+      BELU
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" routerLink="" routerLinkActive="active">Pedidos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" routerLink="/Almacen" routerLinkActive="active">Almacen</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Trabajadores
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" routerLink="/Agregar-Empleado">Agregar</a></li>
+            <li><a class="dropdown-item" routerLink="/Ver-Empleado">Ver</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" routerLink="" routerLinkActive="active">Salir</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<app-ver-empleados *ngFor="let empleado of ListaEmp index as i" [empleadoLista]="empleado" [indice]="i"
+(click)="editar(i)" (dblclick)="eliminar(i)"></app-ver-empleados>
+
+<div class= "container">
+  <div class= "row">
+    <div class="col-md-8 mt-4">
+      <div class="card mt-4">
+        <div class="card-body">
+          <div class="card-title">
+             Insertar Nuevo Empleado
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="Nombre" aria-describedby="nombreHelp" [(ngModel)]="empleado.Nombre" placeholder="Ingresa el Nombre">
+          </div>
+          <div class="form-group mt-2">
+            <input type="text" class="form-control" id="Apellido" aria-describedby="nombreHelp" [(ngModel)]="empleado.Apellido" placeholder="Ingresa el Apellido">
+          </div>
+          <div class="form-group mt-2">
+            <input type="text" class="form-control" id="Edad" aria-describedby="nombreHelp" [(ngModel)]="empleado.Edad" placeholder="Ingresa la Edad">
+          </div>
+          <div class="form-group mt-2">
+            <input type="text" class="form-control" id="Usuario" aria-describedby="nombreHelp" [(ngModel)]="empleado.Usuario" placeholder="Ingresa el Usuario">
+          </div>
+          <div class="mt-2">
+            <button *ngIf="!esEdicion" (click)="Agregar()" class="btn btn-primary" >
+              Agregar
+            </button>
+            <button *ngIf="esEdicion" (click)="AceptarEdicion()" class="btn btn-primary" >
+              Editar
+            </button>
+          </div>
+         </div>
+        </div>
+      </div>
+    <div class="col-md-4">
+      <img width="300" src="https://img.freepik.com/vector-gratis/coleccion-trabajadores-supermercados_52683-37599.jpg?w=2000" alt="">
+    </div>
+  </div>
+</div>
